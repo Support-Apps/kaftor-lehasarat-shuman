@@ -279,6 +279,16 @@
             <div class="button-title">ירכיים</div>
             <div class="button-desc">הסרת שומן מהירכיים</div>
         </div>
+        <div class="power-button" onclick="startProcess('pelvis')">
+            <span class="button-icon">🦴</span>
+            <div class="button-title">אגן</div>
+            <div class="button-desc">הסרת שומן מהאגן</div>
+        </div>
+        <div class="power-button mint" onclick="startProcess('spiritual')">
+            <span class="button-icon">✡️</span>
+            <div class="button-title">שומנים שאינם תורמים</div>
+            <div class="button-desc">הסרת שומנים שאינם תורמים להתפתחות ולאהבת ה'</div>
+        </div>
     </div>
 
     <!-- Face Overlay -->
@@ -290,7 +300,7 @@
             <div class="progress-bar">
                 <div class="progress-fill" id="faceProgress"></div>
             </div>
-            <button class="install-btn" id="faceBtn" onclick="runProcess('face')">🔥 התחילי הסרה</button>
+            <button class="install-btn" id="faceBtn" onclick="runProcess('face')">🔥 התחל/י הסרה</button>
             <div class="completion-message" id="faceComplete">
                 <p style="font-size: 1.3em; margin-bottom: 10px; color: #D4A574;">✅ השומן הוסר!</p>
                 <p style="color: #666;">הפנים שלך רזות ומוגדרות.</p>
@@ -307,10 +317,10 @@
             <div class="progress-bar">
                 <div class="progress-fill" id="chinProgress"></div>
             </div>
-            <button class="install-btn" id="chinBtn" onclick="runProcess('chin')">🔥 התחילי הסרה</button>
+            <button class="install-btn" id="chinBtn" onclick="runProcess('chin')">🔥 התחל/י הסרה</button>
             <div class="completion-message" id="chinComplete">
                 <p style="font-size: 1.3em; margin-bottom: 10px; color: #D4A574;">✅ הסנטר הכפול הוסר!</p>
-                <p style="color: #666;">קו לסת חד ומוגדר.</p>
+                <p style="color: #666;">קו לסת מוגדר ונקי מעודפי שומן.</p>
             </div>
         </div>
     </div>
@@ -324,7 +334,7 @@
             <div class="progress-bar">
                 <div class="progress-fill" id="armsProgress"></div>
             </div>
-            <button class="install-btn" id="armsBtn" onclick="runProcess('arms')">🔥 התחילי הסרה</button>
+            <button class="install-btn" id="armsBtn" onclick="runProcess('arms')">🔥 התחל/י הסרה</button>
             <div class="completion-message" id="armsComplete">
                 <p style="font-size: 1.3em; margin-bottom: 10px; color: #D4A574;">✅ השומן הוסר!</p>
                 <p style="color: #666;">הזרועות שלך רזות ומעוצבות.</p>
@@ -341,7 +351,7 @@
             <div class="progress-bar">
                 <div class="progress-fill" id="chestProgress"></div>
             </div>
-            <button class="install-btn" id="chestBtn" onclick="runProcess('chest')">🔥 התחילי הסרה</button>
+            <button class="install-btn" id="chestBtn" onclick="runProcess('chest')">🔥 התחל/י הסרה</button>
             <div class="completion-message" id="chestComplete">
                 <p style="font-size: 1.3em; margin-bottom: 10px; color: #D4A574;">✅ השומן הוסר!</p>
                 <p style="color: #666;">החזה שלך מעוצב ויפה.</p>
@@ -358,7 +368,7 @@
             <div class="progress-bar">
                 <div class="progress-fill" id="bellyProgress"></div>
             </div>
-            <button class="install-btn" id="bellyBtn" onclick="runProcess('belly')">🔥 התחילי הסרה</button>
+            <button class="install-btn" id="bellyBtn" onclick="runProcess('belly')">🔥 התחל/י הסרה</button>
             <div class="completion-message" id="bellyComplete">
                 <p style="font-size: 1.3em; margin-bottom: 10px; color: #D4A574;">✅ השומן הוסר!</p>
                 <p style="color: #666;">הבטן שלך שטוחה ומעוצבת.</p>
@@ -375,7 +385,7 @@
             <div class="progress-bar">
                 <div class="progress-fill" id="backProgress"></div>
             </div>
-            <button class="install-btn" id="backBtn" onclick="runProcess('back')">🔥 התחילי הסרה</button>
+            <button class="install-btn" id="backBtn" onclick="runProcess('back')">🔥 התחל/י הסרה</button>
             <div class="completion-message" id="backComplete">
                 <p style="font-size: 1.3em; margin-bottom: 10px; color: #D4A574;">✅ השומן הוסר!</p>
                 <p style="color: #666;">הגב שלך חלק ומעוצב.</p>
@@ -392,7 +402,7 @@
             <div class="progress-bar">
                 <div class="progress-fill" id="humpProgress"></div>
             </div>
-            <button class="install-btn" id="humpBtn" onclick="runProcess('hump')">🔥 התחילי הסרה</button>
+            <button class="install-btn" id="humpBtn" onclick="runProcess('hump')">🔥 התחל/י הסרה</button>
             <div class="completion-message" id="humpComplete">
                 <p style="font-size: 1.3em; margin-bottom: 10px; color: #D4A574;">✅ הגיבנת הוסרה!</p>
                 <p style="color: #666;">הצוואר והגב שלך ישרים ויפים.</p>
@@ -409,7 +419,7 @@
             <div class="progress-bar">
                 <div class="progress-fill" id="buttocksProgress"></div>
             </div>
-            <button class="install-btn" id="buttocksBtn" onclick="runProcess('buttocks')">🔥 התחילי הסרה</button>
+            <button class="install-btn" id="buttocksBtn" onclick="runProcess('buttocks')">🔥 התחל/י הסרה</button>
             <div class="completion-message" id="buttocksComplete">
                 <p style="font-size: 1.3em; margin-bottom: 10px; color: #D4A574;">✅ השומן הוסר!</p>
                 <p style="color: #666;">הישבן שלך מעוצב ומורם.</p>
@@ -426,10 +436,44 @@
             <div class="progress-bar">
                 <div class="progress-fill" id="thighsProgress"></div>
             </div>
-            <button class="install-btn" id="thighsBtn" onclick="runProcess('thighs')">🔥 התחילי הסרה</button>
+            <button class="install-btn" id="thighsBtn" onclick="runProcess('thighs')">🔥 התחל/י הסרה</button>
             <div class="completion-message" id="thighsComplete">
                 <p style="font-size: 1.3em; margin-bottom: 10px; color: #D4A574;">✅ השומן הוסר!</p>
                 <p style="color: #666;">הירכיים שלך רזות ומעוצבות.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pelvis Overlay -->
+    <div class="overlay" id="pelvisOverlay">
+        <button class="close-overlay" onclick="closeOverlay('pelvis')">✕</button>
+        <div class="overlay-content">
+            <div class="animation-icon" id="pelvisIcon">🦴</div>
+            <div class="animation-text" id="pelvisText">מתחילה הסרת שומן מהאגן...</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="pelvisProgress"></div>
+            </div>
+            <button class="install-btn" id="pelvisBtn" onclick="runProcess('pelvis')">🔥 התחל/י הסרה</button>
+            <div class="completion-message" id="pelvisComplete">
+                <p style="font-size: 1.3em; margin-bottom: 10px; color: #D4A574;">✅ השומן הוסר!</p>
+                <p style="color: #666;">האגן שלך מעוצב ומחוטב.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Spiritual Overlay -->
+    <div class="overlay" id="spiritualOverlay">
+        <button class="close-overlay" onclick="closeOverlay('spiritual')">✕</button>
+        <div class="overlay-content">
+            <div class="animation-icon" id="spiritualIcon">✡️</div>
+            <div class="animation-text" id="spiritualText">מזהה שומנים שאינם תורמים להתפתחות...</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="spiritualProgress"></div>
+            </div>
+            <button class="install-btn" id="spiritualBtn" onclick="runProcess('spiritual')">🔥 התחל/י הסרה</button>
+            <div class="completion-message" id="spiritualComplete">
+                <p style="font-size: 1.3em; margin-bottom: 10px; color: #D4A574;">✅ השומנים הוסרו!</p>
+                <p style="color: #666;">הגוף שלך קל ומוכן להתפתחות ואהבת ה'.</p>
             </div>
         </div>
     </div>
@@ -543,6 +587,30 @@
                 { percent: 80, text: '🌸 מהדקת את העור...', icon: '🌸' },
                 { percent: 90, text: '💗 משלימה את העיצוב...', icon: '💗' },
                 { percent: 100, text: '✅ השומן הוסר מהירכיים!', icon: '🦵' }
+            ],
+            pelvis: [
+                { percent: 10, text: '🦴 סורקת את אזור האגן...', icon: '🦴' },
+                { percent: 20, text: '🔍 מזהה תאי שומן...', icon: '🔍' },
+                { percent: 30, text: '🔥 מחממת את השומן...', icon: '🔥' },
+                { percent: 40, text: '💧 ממיסה תאי שומן...', icon: '💧' },
+                { percent: 50, text: '🌊 מנקזת את השומן...', icon: '🌊' },
+                { percent: 60, text: '✨ מחטבת את האגן...', icon: '✨' },
+                { percent: 70, text: '💎 מעצבת קווים חלקים...', icon: '💎' },
+                { percent: 80, text: '🌸 מהדקת את העור...', icon: '🌸' },
+                { percent: 90, text: '💗 משלימה את העיצוב...', icon: '💗' },
+                { percent: 100, text: '✅ השומן הוסר מהאגן!', icon: '🦴' }
+            ],
+            spiritual: [
+                { percent: 10, text: '✡️ סורקת את כל הגוף...', icon: '✡️' },
+                { percent: 20, text: '🔍 מזהה שומנים שאינם תורמים להתפתחות...', icon: '🔍' },
+                { percent: 30, text: '💫 מזהה שומנים שחוסמים את אהבת ה\'...', icon: '💫' },
+                { percent: 40, text: '🔥 מחממת את השומנים המיותרים...', icon: '🔥' },
+                { percent: 50, text: '💧 ממיסה את כל מה שמכביד על הנשמה...', icon: '💧' },
+                { percent: 60, text: '🌊 מנקזת את העודפים...', icon: '🌊' },
+                { percent: 70, text: '✨ מקלה את הגוף לעבודת ה\'...', icon: '✨' },
+                { percent: 80, text: '💜 פותחת מקום לאור...', icon: '💜' },
+                { percent: 90, text: '🕊️ הגוף נקי ומוכן לקבל...', icon: '🕊️' },
+                { percent: 100, text: '✅ כל השומנים שאינם תורמים הוסרו!', icon: '✡️' }
             ]
         };
         
@@ -551,7 +619,7 @@
             document.getElementById(type + 'Progress').style.width = '0%';
             document.getElementById(type + 'Complete').classList.remove('show');
             document.getElementById(type + 'Btn').disabled = false;
-            document.getElementById(type + 'Btn').textContent = '🔥 התחילי הסרה';
+            document.getElementById(type + 'Btn').textContent = '🔥 התחל/י הסרה';
         }
         
         function closeOverlay(type) {
@@ -579,7 +647,7 @@
                     clearInterval(interval);
                     document.getElementById(type + 'Complete').classList.add('show');
                     btn.disabled = false;
-                    btn.textContent = '🔥 התחילי הסרה';
+                    btn.textContent = '🔥 התחל/י הסרה';
                 }
             }, 4000);
         }
