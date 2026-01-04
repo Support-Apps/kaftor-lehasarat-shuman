@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔥 הסרת שומן</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Heebo', sans-serif;
+        }
+        
+        body {
+            background: #FFF5F7;
+            min-height: 100vh;
+            color: #333;
+            padding: 20px;
+            padding-bottom: 100px;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 30px 20px;
+            margin-bottom: 20px;
+        }
+        
+        .header h1 {
+            font-size: 2em;
+            color: #D4A574;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            color: #888;
+            font-size: 1.1em;
+        }
+        
+        .icon-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        
+        .main-icon {
+            font-size: 80px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .buttons-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            max-width: 500px;
+            margin: 0 auto 20px;
+        }
+        
+        .power-button {
+            background: #fff;
+            border: 2px solid #FFB6C1;
+            border-radius: 20px;
+            padding: 20px 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .power-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(255, 182, 193, 0.3);
+            background: #FFF0F3;
+        }
+        
+        .power-button:active {
+            transform: scale(0.98);
+        }
+        
+        .power-button.mint { border-color: #B8E6D4; }
+        .power-button.mint:hover { background: #F0FFF8; }
+        
+        .power-button.gold { border-color: #D4A574; }
+        .power-button.gold:hover { background: #FFFAF5; }
+        
+        .button-icon {
+            font-size: 40px;
+            margin-bottom: 8px;
+            display: block;
+        }
+        
+        .button-title {
+            font-size: 1.1em;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .button-desc {
+            font-size: 0.85em;
+            color: #888;
+        }
+        
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #FFF5F7;
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        
+        .overlay.active {
+            display: flex;
+        }
+        
+        .overlay-content {
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+        
+        .close-overlay {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: #FFB6C1;
+            border: none;
+            color: #fff;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        
+        .animation-icon {
+            font-size: 80px;
+            margin-bottom: 30px;
+        }
+        
+        .animation-text {
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            min-height: 60px;
+            color: #333;
+            line-height: 1.5;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 12px;
+            background: #FFE4EC;
+            border-radius: 6px;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            border-radius: 6px;
+            transition: width 0.5s ease;
+            background: #FFB6C1;
+        }
+        
+        .completion-message {
+            display: none;
+            padding: 20px;
+            background: #fff;
+            border: 2px solid #B8E6D4;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+        
+        .completion-message.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .install-btn {
+            background: #FFB6C1;
+            border: none;
+            color: #fff;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .install-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(255, 182, 193, 0.5);
+        }
+        
+        .install-btn:disabled {
+            background: #ddd;
+            cursor: not-allowed;
+            transform: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🔥 הסרת שומן</h1>
+        <p>הסרת שומן מאזורי הגוף</p>
+    </div>
+    
+    <div class="icon-container">
+        <span class="main-icon">✨</span>
+    </div>
+    
+    <div class="buttons-grid">
+        <div class="power-button" onclick="startProcess('face')">
+            <span class="button-icon">😊</span>
+            <div class="button-title">פנים</div>
+            <div class="button-desc">הסרת שומן מהפנים</div>
+        </div>
+        <div class="power-button mint" onclick="startProcess('chin')">
+            <span class="button-icon">🫦</span>
+            <div class="button-title">סנטר</div>
+            <div class="button-desc">הסרת סנטר כפול</div>
+        </div>
+        <div class="power-button gold" onclick="startProcess('arms')">
+            <span class="button-icon">💪</span>
+            <div class="button-title">זרועות</div>
+            <div class="button-desc">הסרת שומן מהזרועות</div>
+        </div>
+        <div class="power-button" onclick="startProcess('chest')">
+            <span class="button-icon">👙</span>
+            <div class="button-title">חזה</div>
+            <div class="button-desc">הסרת שומן מהחזה</div>
+        </div>
+        <div class="power-button mint" onclick="startProcess('belly')">
+            <span class="button-icon">🎯</span>
+            <div class="button-title">בטן</div>
+            <div class="button-desc">הסרת שומן מהבטן</div>
+        </div>
+        <div class="power-button gold" onclick="startProcess('back')">
+            <span class="button-icon">🔙</span>
+            <div class="button-title">גב</div>
+            <div class="button-desc">הסרת שומן מהגב</div>
+        </div>
+        <div class="power-button" onclick="startProcess('hump')">
+            <span class="button-icon">🦢</span>
+            <div class="button-title">גיבנת שומנית</div>
+            <div class="button-desc">הסרת גיבנת שומנית</div>
+        </div>
+        <div class="power-button mint" onclick="startProcess('buttocks')">
+            <span class="button-icon">🍑</span>
+            <div class="button-title">ישבן</div>
+            <div class="button-desc">הסרת שומן מהישבן</div>
+        </div>
+        <div class="power-button gold" onclick="startProcess('thighs')">
+            <span class="button-icon">🦵</span>
+            <div class="button-title">ירכיים</div>
+            <div class="button-desc">הסרת שומן מהירכיים</div>
+        </div>
+    </div>
+
+    <!-- Face Overlay -->
+    <div class="overlay" id="faceOverlay">
+        <button class="close-overlay" onclick="closeOverlay('face')">✕</button>
+        <div class="overlay-content">
+            <div class="animation-icon" id="faceIcon">😊</div>
+            <div class="animation-text" id="faceText">מתחילה הסרת שומן מהפנים...</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="faceProgress"></div>
+            </div>
+            <button class="install-btn" id="faceBtn" onclick="runProcess('face')">🔥 התחילי הסרה</button>
+            <div class="completion-message" id="faceComplete">
+                <p style="font-size: 1.3em; margin-bottom: 10px; color: #D4A574;">✅ השומן הוסר!</p>
+                <p style="color: #666;">הפנים שלך רזות ומוגדרות.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chin Overlay -->
+    <div class="overlay" id="chinOverlay">
+        <button class="close-overlay" onclick="closeOverlay('chin')">✕</button>
+        <div class="overlay-content">
+            <div class="animation-icon" id="chinIcon">🫦</div>
+            <div class="animation-text" id="chinText">מתחילה הסרת סנטר כפול...</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="chinProgress"></div>
+            </div>
+            <button class="install-btn" id="chinBtn" onclick="runProcess('chin')">🔥 התחילי הסרה</button>
+            <div class="completion-message" id="chinComplete">
+                <p style="font-size: 1.3em; margin-bottom: 10px; color: #D4A574;">✅ הסנטר הכפול הוסר!</p>
+                <p style="color: #666;">קו לסת חד ומוגדר.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Arms Overlay -->
+    <div class="overlay" id="armsOverlay">
+        <button class="close-overlay" onclick="closeOverlay('arms')">✕</button>
+        <div class="overlay-content">
+            <div class="animation-icon" id="armsIcon">💪</div>
+            <div class="animation-text" id="armsText">מתחילה הסרת שומן מהזרועות...</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="armsProgress"></div>
+            </div>
+            <button class="install-btn" id="armsBtn" onclick="runProcess('arms')">🔥 התחילי הסרה</button>
+            <div class="completion-message" id="armsComplete">
+                <p style="font-size: 1.3em; margin-bottom: 10px; color: #D4A574;">✅ השומן הוסר!</p>
+                <p style="color: #666;">הזרועות שלך רזות ומעוצבות.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chest Overlay -->
+    <div class="overlay" id="chestOverlay">
+        <button class="close-overlay" onclick="closeOverlay('chest')">✕</button>
+        <div class="overlay-content">
+            <div class="animation-icon" id="chestIcon">👙</div>
+            <div class="animation-text" id="chestText">מתחילה הסרת שומן מהחזה...</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="chestProgress"></div>
+            </div>
+            <button class="install-btn" id="chestBtn" onclick="runProcess('chest')">🔥 התחילי הסרה</button>
+            <div class="completion-message" id="chestComplete">
+                <p style="font-size: 1.3em; margin-bottom: 10px; color: #D4A574;">✅ השומן הוסר!</p>
+                <p style="color: #666;">החזה שלך מעוצב ויפה.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Belly Overlay -->
+    <div class="overlay" id="bellyOverlay">
+        <button class="close-overlay" onclick="closeOverlay('belly')">✕</button>
+        <div class="overlay-content">
+            <div class="animation-icon" id="bellyIcon">🎯</div>
+            <div class="animation-text" id="bellyText">מתחילה הסרת שומן מהבטן...</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="bellyProgress"></div>
+            </div>
+            <button class="install-btn" id="bellyBtn" onclick="runProcess('belly')">🔥 התחילי הסרה</button>
+            <div class="completion-message" id="bellyComplete">
+                <p style="font-size: 1.3em; margin-bottom: 10px; color: #D4A574;">✅ השומן הוסר!</p>
+                <p style="color: #666;">הבטן שלך שטוחה ומעוצבת.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back Overlay -->
+    <div class="overlay" id="backOverlay">
+        <button class="close-overlay" onclick="closeOverlay('back')">✕</button>
+        <div class="overlay-content">
+            <div class="animation-icon" id="backIcon">🔙</div>
+            <div class="animation-text" id="backText">מתחילה הסרת שומן מהגב...</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="backProgress"></div>
+            </div>
+            <button class="install-btn" id="backBtn" onclick="runProcess('back')">🔥 התחילי הסרה</button>
+            <div class="completion-message" id="backComplete">
+                <p style="font-size: 1.3em; margin-bottom: 10px; color: #D4A574;">✅ השומן הוסר!</p>
+                <p style="color: #666;">הגב שלך חלק ומעוצב.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hump Overlay -->
+    <div class="overlay" id="humpOverlay">
+        <button class="close-overlay" onclick="closeOverlay('hump')">✕</button>
+        <div class="overlay-content">
+            <div class="animation-icon" id="humpIcon">🦢</div>
+            <div class="animation-text" id="humpText">מתחילה הסרת גיבנת שומנית...</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="humpProgress"></div>
+            </div>
+            <button class="install-btn" id="humpBtn" onclick="runProcess('hump')">🔥 התחילי הסרה</button>
+            <div class="completion-message" id="humpComplete">
+                <p style="font-size: 1.3em; margin-bottom: 10px; color: #D4A574;">✅ הגיבנת הוסרה!</p>
+                <p style="color: #666;">הצוואר והגב שלך ישרים ויפים.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Buttocks Overlay -->
+    <div class="overlay" id="buttocksOverlay">
+        <button class="close-overlay" onclick="closeOverlay('buttocks')">✕</button>
+        <div class="overlay-content">
+            <div class="animation-icon" id="buttocksIcon">🍑</div>
+            <div class="animation-text" id="buttocksText">מתחילה הסרת שומן מהישבן...</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="buttocksProgress"></div>
+            </div>
+            <button class="install-btn" id="buttocksBtn" onclick="runProcess('buttocks')">🔥 התחילי הסרה</button>
+            <div class="completion-message" id="buttocksComplete">
+                <p style="font-size: 1.3em; margin-bottom: 10px; color: #D4A574;">✅ השומן הוסר!</p>
+                <p style="color: #666;">הישבן שלך מעוצב ומורם.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Thighs Overlay -->
+    <div class="overlay" id="thighsOverlay">
+        <button class="close-overlay" onclick="closeOverlay('thighs')">✕</button>
+        <div class="overlay-content">
+            <div class="animation-icon" id="thighsIcon">🦵</div>
+            <div class="animation-text" id="thighsText">מתחילה הסרת שומן מהירכיים...</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="thighsProgress"></div>
+            </div>
+            <button class="install-btn" id="thighsBtn" onclick="runProcess('thighs')">🔥 התחילי הסרה</button>
+            <div class="completion-message" id="thighsComplete">
+                <p style="font-size: 1.3em; margin-bottom: 10px; color: #D4A574;">✅ השומן הוסר!</p>
+                <p style="color: #666;">הירכיים שלך רזות ומעוצבות.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const processStages = {
+            face: [
+                { percent: 10, text: '😊 סורקת את אזור הפנים...', icon: '😊' },
+                { percent: 20, text: '🔍 מזהה תאי שומן...', icon: '🔍' },
+                { percent: 30, text: '🔥 מחממת את השומן...', icon: '🔥' },
+                { percent: 40, text: '💧 ממיסה תאי שומן...', icon: '💧' },
+                { percent: 50, text: '🌊 מנקזת את השומן...', icon: '🌊' },
+                { percent: 60, text: '✨ מחטבת את קווי הפנים...', icon: '✨' },
+                { percent: 70, text: '💎 מגדירה את עצמות הלחיים...', icon: '💎' },
+                { percent: 80, text: '🌸 מחדשת את העור...', icon: '🌸' },
+                { percent: 90, text: '💗 מהדקת את הרקמות...', icon: '💗' },
+                { percent: 100, text: '✅ השומן הוסר מהפנים!', icon: '😊' }
+            ],
+            chin: [
+                { percent: 10, text: '🫦 סורקת את אזור הסנטר...', icon: '🫦' },
+                { percent: 20, text: '🔍 מזהה שומן עודף...', icon: '🔍' },
+                { percent: 30, text: '🔥 מחממת את השומן...', icon: '🔥' },
+                { percent: 40, text: '💧 ממיסה את הסנטר הכפול...', icon: '💧' },
+                { percent: 50, text: '🌊 מנקזת את השומן...', icon: '🌊' },
+                { percent: 60, text: '✨ מחטבת את קו הלסת...', icon: '✨' },
+                { percent: 70, text: '💎 מגדירה את הסנטר...', icon: '💎' },
+                { percent: 80, text: '🌸 מהדקת את העור...', icon: '🌸' },
+                { percent: 90, text: '💗 משלימה את העיצוב...', icon: '💗' },
+                { percent: 100, text: '✅ הסנטר הכפול הוסר!', icon: '🫦' }
+            ],
+            arms: [
+                { percent: 10, text: '💪 סורקת את הזרועות...', icon: '💪' },
+                { percent: 20, text: '🔍 מזהה תאי שומן...', icon: '🔍' },
+                { percent: 30, text: '🔥 מחממת את השומן...', icon: '🔥' },
+                { percent: 40, text: '💧 ממיסה תאי שומן...', icon: '💧' },
+                { percent: 50, text: '🌊 מנקזת את השומן...', icon: '🌊' },
+                { percent: 60, text: '✨ מחטבת את הזרועות...', icon: '✨' },
+                { percent: 70, text: '💎 מעצבת קווים חדים...', icon: '💎' },
+                { percent: 80, text: '🌸 מהדקת את העור...', icon: '🌸' },
+                { percent: 90, text: '💗 משלימה את העיצוב...', icon: '💗' },
+                { percent: 100, text: '✅ השומן הוסר מהזרועות!', icon: '💪' }
+            ],
+            chest: [
+                { percent: 10, text: '👙 סורקת את אזור החזה...', icon: '👙' },
+                { percent: 20, text: '🔍 מזהה תאי שומן...', icon: '🔍' },
+                { percent: 30, text: '🔥 מחממת את השומן...', icon: '🔥' },
+                { percent: 40, text: '💧 ממיסה תאי שומן...', icon: '💧' },
+                { percent: 50, text: '🌊 מנקזת את השומן...', icon: '🌊' },
+                { percent: 60, text: '✨ מחטבת את החזה...', icon: '✨' },
+                { percent: 70, text: '💎 מעצבת את הצורה...', icon: '💎' },
+                { percent: 80, text: '🌸 מהדקת את העור...', icon: '🌸' },
+                { percent: 90, text: '💗 משלימה את העיצוב...', icon: '💗' },
+                { percent: 100, text: '✅ השומן הוסר מהחזה!', icon: '👙' }
+            ],
+            belly: [
+                { percent: 10, text: '🎯 סורקת את אזור הבטן...', icon: '🎯' },
+                { percent: 20, text: '🔍 מזהה תאי שומן...', icon: '🔍' },
+                { percent: 30, text: '🔥 מחממת את השומן...', icon: '🔥' },
+                { percent: 40, text: '💧 ממיסה תאי שומן...', icon: '💧' },
+                { percent: 50, text: '🌊 מנקזת את השומן...', icon: '🌊' },
+                { percent: 60, text: '✨ משטחת את הבטן...', icon: '✨' },
+                { percent: 70, text: '💎 מגדירה את השרירים...', icon: '💎' },
+                { percent: 80, text: '🌸 מהדקת את העור...', icon: '🌸' },
+                { percent: 90, text: '💗 משלימה את העיצוב...', icon: '💗' },
+                { percent: 100, text: '✅ השומן הוסר מהבטן!', icon: '🎯' }
+            ],
+            back: [
+                { percent: 10, text: '🔙 סורקת את אזור הגב...', icon: '🔙' },
+                { percent: 20, text: '🔍 מזהה תאי שומן...', icon: '🔍' },
+                { percent: 30, text: '🔥 מחממת את השומן...', icon: '🔥' },
+                { percent: 40, text: '💧 ממיסה תאי שומן...', icon: '💧' },
+                { percent: 50, text: '🌊 מנקזת את השומן...', icon: '🌊' },
+                { percent: 60, text: '✨ מחליקה את הגב...', icon: '✨' },
+                { percent: 70, text: '💎 מעצבת קווים חלקים...', icon: '💎' },
+                { percent: 80, text: '🌸 מהדקת את העור...', icon: '🌸' },
+                { percent: 90, text: '💗 משלימה את העיצוב...', icon: '💗' },
+                { percent: 100, text: '✅ השומן הוסר מהגב!', icon: '🔙' }
+            ],
+            hump: [
+                { percent: 10, text: '🦢 סורקת את אזור הגיבנת...', icon: '🦢' },
+                { percent: 20, text: '🔍 מזהה את הצטברות השומן...', icon: '🔍' },
+                { percent: 30, text: '🔥 מחממת את השומן...', icon: '🔥' },
+                { percent: 40, text: '💧 ממיסה את הגיבנת...', icon: '💧' },
+                { percent: 50, text: '🌊 מנקזת את השומן...', icon: '🌊' },
+                { percent: 60, text: '✨ מישרת את הקו...', icon: '✨' },
+                { percent: 70, text: '💎 משפרת את היציבה...', icon: '💎' },
+                { percent: 80, text: '🌸 מהדקת את העור...', icon: '🌸' },
+                { percent: 90, text: '💗 משלימה את העיצוב...', icon: '💗' },
+                { percent: 100, text: '✅ הגיבנת השומנית הוסרה!', icon: '🦢' }
+            ],
+            buttocks: [
+                { percent: 10, text: '🍑 סורקת את אזור הישבן...', icon: '🍑' },
+                { percent: 20, text: '🔍 מזהה תאי שומן...', icon: '🔍' },
+                { percent: 30, text: '🔥 מחממת את השומן...', icon: '🔥' },
+                { percent: 40, text: '💧 ממיסה תאי שומן...', icon: '💧' },
+                { percent: 50, text: '🌊 מנקזת את השומן...', icon: '🌊' },
+                { percent: 60, text: '✨ מעצבת את הישבן...', icon: '✨' },
+                { percent: 70, text: '💎 מרימה ומעגלת...', icon: '💎' },
+                { percent: 80, text: '🌸 מהדקת את העור...', icon: '🌸' },
+                { percent: 90, text: '💗 משלימה את העיצוב...', icon: '💗' },
+                { percent: 100, text: '✅ השומן הוסר מהישבן!', icon: '🍑' }
+            ],
+            thighs: [
+                { percent: 10, text: '🦵 סורקת את הירכיים...', icon: '🦵' },
+                { percent: 20, text: '🔍 מזהה תאי שומן...', icon: '🔍' },
+                { percent: 30, text: '🔥 מחממת את השומן...', icon: '🔥' },
+                { percent: 40, text: '💧 ממיסה תאי שומן...', icon: '💧' },
+                { percent: 50, text: '🌊 מנקזת את השומן...', icon: '🌊' },
+                { percent: 60, text: '✨ מחטבת את הירכיים...', icon: '✨' },
+                { percent: 70, text: '💎 מעצבת קווים רזים...', icon: '💎' },
+                { percent: 80, text: '🌸 מהדקת את העור...', icon: '🌸' },
+                { percent: 90, text: '💗 משלימה את העיצוב...', icon: '💗' },
+                { percent: 100, text: '✅ השומן הוסר מהירכיים!', icon: '🦵' }
+            ]
+        };
+        
+        function startProcess(type) {
+            document.getElementById(type + 'Overlay').classList.add('active');
+            document.getElementById(type + 'Progress').style.width = '0%';
+            document.getElementById(type + 'Complete').classList.remove('show');
+            document.getElementById(type + 'Btn').disabled = false;
+            document.getElementById(type + 'Btn').textContent = '🔥 התחילי הסרה';
+        }
+        
+        function closeOverlay(type) {
+            document.getElementById(type + 'Overlay').classList.remove('active');
+        }
+        
+        function runProcess(type) {
+            const btn = document.getElementById(type + 'Btn');
+            const progress = document.getElementById(type + 'Progress');
+            const text = document.getElementById(type + 'Text');
+            const icon = document.getElementById(type + 'Icon');
+            const stages = processStages[type];
+            
+            btn.disabled = true;
+            btn.textContent = '⏳ בתהליך...';
+            
+            let stage = 0;
+            const interval = setInterval(() => {
+                if (stage < stages.length) {
+                    progress.style.width = stages[stage].percent + '%';
+                    text.textContent = stages[stage].text;
+                    icon.textContent = stages[stage].icon;
+                    stage++;
+                } else {
+                    clearInterval(interval);
+                    document.getElementById(type + 'Complete').classList.add('show');
+                    btn.disabled = false;
+                    btn.textContent = '🔥 התחילי הסרה';
+                }
+            }, 4000);
+        }
+    </script>
+</body>
+</html>
